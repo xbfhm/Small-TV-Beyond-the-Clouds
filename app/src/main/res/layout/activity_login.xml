@@ -55,14 +55,14 @@
         <Button
             android:id="@+id/btnRefresh"
             style="@style/YzbButton"
-            android:text="刷新二维码" />
+            android:text="刷新二维码" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <Button
             android:id="@+id/btnLogout"
             style="@style/YzbButton"
             android:layout_marginStart="14dp"
             android:text="退出登录"
-            android:visibility="gone" />
+            android:visibility="gone" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
     </LinearLayout>
 

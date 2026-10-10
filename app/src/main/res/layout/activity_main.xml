@@ -31,27 +31,27 @@
         <Button
             android:id="@+id/btnHome"
             style="@style/YzbButton"
-            android:text="首页" />
+            android:text="首页" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <Button
             android:id="@+id/btnBangumi"
             style="@style/YzbButton"
-            android:text="番剧" />
+            android:text="番剧" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <Button
             android:id="@+id/btnRank"
             style="@style/YzbButton"
-            android:text="排行" />
+            android:text="排行" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <Button
             android:id="@+id/btnHistory"
             style="@style/YzbButton"
-            android:text="历史" />
+            android:text="历史" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <Button
             android:id="@+id/btnFree"
             style="@style/YzbButton"
-            android:text="免费动漫" />
+            android:text="免费动漫" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <EditText
             android:id="@+id/etSearch"
@@ -71,12 +71,12 @@
         <Button
             android:id="@+id/btnMsg"
             style="@style/YzbButton"
-            android:text="消息" />
+            android:text="消息" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <Button
             android:id="@+id/btnUser"
             style="@style/YzbButton"
-            android:text="未登录" />
+            android:text="未登录" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
     </LinearLayout>
 

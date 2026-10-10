@@ -20,7 +20,7 @@
         <Button
             android:id="@+id/btnBack"
             style="@style/YzbButton"
-            android:text="返回" />
+            android:text="返回" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <TextView
             android:id="@+id/tvChatName"
@@ -74,7 +74,7 @@
             android:id="@+id/btnSendChat"
             style="@style/YzbButton"
             android:layout_marginStart="8dp"
-            android:text="发送" />
+            android:text="发送" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
     </LinearLayout>
 

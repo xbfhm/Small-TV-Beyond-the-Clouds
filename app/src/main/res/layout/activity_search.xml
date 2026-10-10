@@ -19,7 +19,7 @@
         <Button
             android:id="@+id/btnBack"
             style="@style/YzbButton"
-            android:text="返回" />
+            android:text="返回" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <EditText
             android:id="@+id/etKeyword"
@@ -41,23 +41,23 @@
             android:id="@+id/btnSearch"
             style="@style/YzbButton"
             android:layout_marginStart="8dp"
-            android:text="搜索" />
+            android:text="搜索" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <Button
             android:id="@+id/btnTabBili"
             style="@style/YzbButton"
             android:layout_marginStart="8dp"
-            android:text="B站视频" />
+            android:text="B站视频" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <Button
             android:id="@+id/btnTabBangumi"
             style="@style/YzbButton"
-            android:text="番剧" />
+            android:text="番剧" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <Button
             android:id="@+id/btnTabFree"
             style="@style/YzbButton"
-            android:text="免费源" />
+            android:text="免费源" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
     </LinearLayout>
 

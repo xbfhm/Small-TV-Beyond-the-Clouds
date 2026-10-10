@@ -19,7 +19,7 @@
         <Button
             android:id="@+id/btnBack"
             style="@style/YzbButton"
-            android:text="返回" />
+            android:text="返回" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <TextView
             android:id="@+id/tvSpaceTitle"
@@ -87,7 +87,7 @@
         <Button
             android:id="@+id/btnFollow"
             style="@style/YzbButton"
-            android:text="关注" />
+            android:text="关注" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
     </LinearLayout>
 

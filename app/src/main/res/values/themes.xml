@@ -8,6 +8,7 @@
     </style>
 
     <style name="YzbButton" parent="Widget.AppCompat.Button.Borderless">
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">46dp</item>
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/text_primary</item>

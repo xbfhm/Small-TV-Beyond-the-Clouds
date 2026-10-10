@@ -19,7 +19,7 @@
         <Button
             android:id="@+id/btnBack"
             style="@style/YzbButton"
-            android:text="返回" />
+            android:text="返回" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <TextView
             android:id="@+id/tvMsgTitle"
@@ -35,22 +35,22 @@
         <Button
             android:id="@+id/btnTabSession"
             style="@style/YzbButton"
-            android:text="私信" />
+            android:text="私信" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <Button
             android:id="@+id/btnTabReply"
             style="@style/YzbButton"
-            android:text="回复我的" />
+            android:text="回复我的" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <Button
             android:id="@+id/btnTabAt"
             style="@style/YzbButton"
-            android:text="@我" />
+            android:text="@我" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
         <Button
             android:id="@+id/btnTabLike"
             style="@style/YzbButton"
-            android:text="收到的赞" />
+            android:text="收到的赞" android:layout_width="wrap_content" android:layout_height="46dp"/>
 
     </LinearLayout>
 
