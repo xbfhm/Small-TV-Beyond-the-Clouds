@@ -32,24 +32,25 @@ jobs:
 
       - name: Build
         run: |
-          cd app
-          chmod +x gradlew 2>/dev/null || true
-          # 无 gradle wrapper 时直接下载 gradle
+          set -o pipefail
           if [ ! -f gradlew ]; then
             curl -sL -o /tmp/gradle.zip https://services.gradle.org/distributions/gradle-8.5-bin.zip
             unzip -q /tmp/gradle.zip -d /tmp
-            /tmp/gradle-8.5/bin/gradle assembleDebug 2>&1 | tee build.log
+            /tmp/gradle-8.5/bin/gradle assembleDebug > build.log 2>&1
+            echo "BUILD_EXIT=$?"
           else
-            ./gradlew assembleDebug 2>&1 | tee build.log
+            ./gradlew assembleDebug > build.log 2>&1
+            echo "BUILD_EXIT=$?"
           fi
+          echo "=== 日志尾部 ==="
+          tail -c 3000 build.log
 
       - name: Upload build log on failure
         if: failure()
         run: |
-          cd app
           tail -c 80000 build.log > ci-log.txt
           git add ci-log.txt 2>/dev/null || true
-          git commit -m "ci log" 2>/dev/null || true
+          git -c user.name=ci -c user.email=ci@localhost commit -m "ci log" 2>/dev/null || true
           git push origin HEAD:ci-log --force 2>/dev/null || true
 
       - name: Release APK
@@ -57,6 +58,6 @@ jobs:
         with:
           tag_name: latest
           name: 云之彼端小电视 最新构建
-          files: app/app/build/outputs/apk/debug/app-debug.apk
+          files: app/build/outputs/apk/debug/app-debug.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
