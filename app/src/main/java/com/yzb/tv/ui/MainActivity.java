@@ -58,7 +58,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        com.yzb.tv.App.bootLog("MAIN-0 MainActivity.onCreate");
+        try {
+            setContentView(R.layout.activity_main);
+        } catch (Throwable t) {
+            com.yzb.tv.App.bootLog("MAIN-FAIL setContentView: " + t);
+            throw new RuntimeException(t);
+        }
+        com.yzb.tv.App.bootLog("MAIN-1 layout ok");
 
         etSearch = findViewById(R.id.etSearch);
         btnHome = findViewById(R.id.btnHome);
@@ -122,8 +129,10 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
+        com.yzb.tv.App.bootLog("MAIN-2 views/adapter ok");
         // 默认加载首页推荐
         switchTab("home");
+        com.yzb.tv.App.bootLog("MAIN-3 switchTab done");
     }
 
     @Override
@@ -152,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
                     default:
                         list = loadRecommend();
                 }
+                com.yzb.tv.App.bootLog("MAIN-4 tab=" + tab + " 数据加载成功 n=" + list.size());
                 ui.post(() -> {
                     adapter.setData(list);
                     showLoading(false);
@@ -160,6 +170,7 @@ public class MainActivity extends AppCompatActivity {
                     tvBottom.setText(tabName(tab) + " · 共 " + list.size() + " 项");
                 });
             } catch (Exception ex) {
+                com.yzb.tv.App.bootLog("MAIN-FAIL tab=" + tab + ": " + ex);
                 ui.post(() -> {
                     showLoading(false);
                     tvStatus.setVisibility(View.VISIBLE);

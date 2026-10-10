@@ -32,17 +32,72 @@ public class App extends Application {
 
     public static App app;
 
+    /** 启动轨迹: 无论闪退还是正常, 都能在 Download/yzb-boot.txt 看到走到哪一步 */
+    private static final StringBuilder boot = new StringBuilder();
+
+    public static void bootLog(String msg) {
+        try {
+            boot.append(java.text.SimpleDateFormat.getTimeInstance().format(new Date()))
+                    .append(" ").append(msg).append("\n");
+            writeBootToDisk(boot.toString());
+        } catch (Throwable ignored) {
+        }
+    }
+
+    private static void writeBootToDisk(String text) {
+        if (app == null) return;
+        try {
+            File f = new File(app.getCacheDir(), "yzb-boot.txt");
+            try (FileWriter fw = new FileWriter(f, false)) {
+                fw.write(text);
+            }
+        } catch (Throwable ignored) {
+        }
+        try {
+            if (android.os.Build.VERSION.SDK_INT >= 29) {
+                android.content.ContentResolver cr = app.getContentResolver();
+                android.net.Uri coll = android.provider.MediaStore.Downloads.EXTERNAL_CONTENT_URI;
+                try {
+                    cr.delete(coll, android.provider.MediaStore.MediaColumns.DISPLAY_NAME + "=?",
+                            new String[]{"yzb-boot.txt"});
+                } catch (Throwable ignored) {
+                }
+                android.content.ContentValues cv = new android.content.ContentValues();
+                cv.put(android.provider.MediaStore.MediaColumns.DISPLAY_NAME, "yzb-boot.txt");
+                cv.put(android.provider.MediaStore.MediaColumns.MIME_TYPE, "text/plain");
+                cv.put(android.provider.MediaStore.MediaColumns.RELATIVE_PATH,
+                        android.os.Environment.DIRECTORY_DOWNLOADS);
+                android.net.Uri uri = cr.insert(coll, cv);
+                if (uri != null) {
+                    try (java.io.OutputStream os = cr.openOutputStream(uri)) {
+                        os.write(text.getBytes("UTF-8"));
+                    }
+                }
+            }
+        } catch (Throwable ignored) {
+        }
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+        bootLog("BOOT-0 App.onCreate sdk=" + android.os.Build.VERSION.SDK_INT
+                + " model=" + android.os.Build.MODEL);
         app = this;
-        installCrashHandler();
+        try {
+            installCrashHandler();
+            bootLog("BOOT-1 crashHandler ok");
+        } catch (Throwable t) {
+            bootLog("BOOT-1 crashHandler FAIL " + t);
+        }
 
         // 每个初始化独立 try/catch, 单个失败不影响启动
         safe(() -> CookieStore.init(this), "CookieStore");
+        bootLog("BOOT-2 init ok");
         safe(() -> Http.init(this), "Http");
         safe(() -> AgeApi.init(this), "AgeApi");
         safe(() -> RuleRepo.init(this), "RuleRepo");
+        bootLog("BOOT-3 inits done");
         try {
             new Thread(AgeApi::warmUp, "age-warmup").start();
         } catch (Throwable ignored) {
@@ -55,6 +110,7 @@ public class App extends Application {
         try {
             r.run();
         } catch (Throwable t) {
+            bootLog("BOOT-FAIL " + name + ": " + t);
             reportCrash("init " + name + " 失败: " + stackOf(t));
         }
     }
