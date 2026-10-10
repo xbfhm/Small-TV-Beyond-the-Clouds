@@ -105,6 +105,26 @@ public class App extends Application {
             }
         } catch (Exception ignored) {
         }
+        // Android 10+ : 通过 MediaStore 把崩溃日志写到 Download 目录 (无需权限, 方便读取)
+        try {
+            if (android.os.Build.VERSION.SDK_INT >= 29) {
+                android.content.ContentValues cv = new android.content.ContentValues();
+                cv.put(android.provider.MediaStore.MediaColumns.DISPLAY_NAME,
+                        "yzb-crash-" + System.currentTimeMillis() + ".txt");
+                cv.put(android.provider.MediaStore.MediaColumns.MIME_TYPE, "text/plain");
+                cv.put(android.provider.MediaStore.MediaColumns.RELATIVE_PATH,
+                        android.os.Environment.DIRECTORY_DOWNLOADS);
+                android.content.ContentResolver cr = getContentResolver();
+                android.net.Uri uri = cr.insert(
+                        android.provider.MediaStore.Downloads.EXTERNAL_CONTENT_URI, cv);
+                if (uri != null) {
+                    try (java.io.OutputStream os = cr.openOutputStream(uri)) {
+                        os.write(text.getBytes("UTF-8"));
+                    }
+                }
+            }
+        } catch (Throwable ignored) {
+        }
     }
 
     /** 上报崩溃到服务器 (同步, 短超时) */
