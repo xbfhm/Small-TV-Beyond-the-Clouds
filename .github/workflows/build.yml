@@ -36,14 +36,12 @@ jobs:
           if [ ! -f gradlew ]; then
             curl -sL -o /tmp/gradle.zip https://services.gradle.org/distributions/gradle-8.5-bin.zip
             unzip -q /tmp/gradle.zip -d /tmp
-            /tmp/gradle-8.5/bin/gradle assembleDebug > build.log 2>&1
-            echo "BUILD_EXIT=$?"
+            /tmp/gradle-8.5/bin/gradle assembleDebug > build.log 2>&1 || { echo "=== BUILD FAILED, 日志尾部 ==="; tail -c 8000 build.log; exit 1; }
           else
-            ./gradlew assembleDebug > build.log 2>&1
-            echo "BUILD_EXIT=$?"
+            ./gradlew assembleDebug > build.log 2>&1 || { echo "=== BUILD FAILED, 日志尾部 ==="; tail -c 8000 build.log; exit 1; }
           fi
-          echo "=== 日志尾部 ==="
-          tail -c 3000 build.log
+          echo "=== BUILD OK, 产物 ==="
+          ls -la app/build/outputs/apk/debug/
 
       - name: Upload build log on failure
         if: failure()
