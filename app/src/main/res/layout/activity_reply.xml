@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_dark"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@color/bg_panel">
+
+        <Button
+            android:id="@+id/btnBack"
+            style="@style/YzbButton"
+            android:text="返回" />
+
+        <TextView
+            android:id="@+id/tvReplyTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="14dp"
+            android:text="评论"
+            android:textColor="@color/text_primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnSortHot"
+            style="@style/YzbButton"
+            android:text="热度" />
+
+        <Button
+            android:id="@+id/btnSortTime"
+            style="@style/YzbButton"
+            android:text="时间" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvReply"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="6dp"
+            android:clipToPadding="false" />
+
+        <ProgressBar
+            android:id="@+id/pbReply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvReplyEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/text_secondary"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <!-- 底部发表评论 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="8dp"
+        android:background="@color/bg_panel">
+
+        <EditText
+            android:id="@+id/etReply"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_weight="1"
+            android:hint="发一条友善的评论..."
+            android:textColorHint="@color/text_dim"
+            android:textColor="@color/text_primary"
+            android:textSize="17sp"
+            android:background="@drawable/edit_bg"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/btnSendReply"
+            style="@style/YzbButton"
+            android:layout_marginStart="8dp"
+            android:text="发送" />
+
+    </LinearLayout>
+
+</LinearLayout>

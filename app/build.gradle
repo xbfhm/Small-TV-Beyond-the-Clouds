@@ -1,0 +1,57 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.yzb.tv'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.yzb.tv"
+        minSdk 21          // Android 5.0+，覆盖海信 VIDAA V1 (5.1.1)
+        targetSdk 26       // 对标云视听小电视: 低 targetSdk 宽适配老电视
+        versionCode 1
+        versionName "1.0"
+        ndk {
+            abiFilters 'arm64-v8a', 'armeabi-v7a'   // 手机+电视双架构
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled true
+    }
+}
+
+dependencies {
+    // 基础 UI
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    // 网络 (OkHttp, Android 5.0+ 兼容 TLS1.2)
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    // 播放器 (ExoPlayer/Media3 硬解; dash 支持 B站 1080P 分轨流)
+    implementation 'androidx.media3:media3-exoplayer:1.3.1'
+    implementation 'androidx.media3:media3-exoplayer-hls:1.3.1'
+    implementation 'androidx.media3:media3-exoplayer-dash:1.3.1'
+    implementation 'androidx.media3:media3-ui:1.3.1'
+    implementation 'androidx.media3:media3-datasource-okhttp:1.3.1'
+    // 图片加载 (封面图)
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
+    // 二维码 (扫码登录)
+    implementation 'com.google.zxing:core:3.5.2'
+    // 免费动漫源: HTML解析 + XPath (Kazumi 规则引擎)
+    implementation 'org.jsoup:jsoup:1.15.3'
+    implementation 'cn.wanghaomiao:JsoupXpath:2.5.3'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'org.antlr:antlr4-runtime:4.7.2'
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+    // 老系统 Java8 API 回填 (Android 5.x 缺 java.util.function 等)
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.4'
+}

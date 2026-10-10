@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/bg_dark">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="扫码登录 B站账号"
+        android:textColor="@color/text_primary"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="用「哔哩哔哩」手机 App 扫一扫"
+        android:textColor="@color/text_secondary"
+        android:textSize="16sp" />
+
+    <FrameLayout
+        android:layout_width="260dp"
+        android:layout_height="260dp"
+        android:layout_marginTop="24dp"
+        android:background="#FFFFFF"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/ivQR"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvLoginStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="加载中..."
+        android:textColor="@color/text_secondary"
+        android:textSize="17sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnRefresh"
+            style="@style/YzbButton"
+            android:text="刷新二维码" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            style="@style/YzbButton"
+            android:layout_marginStart="14dp"
+            android:text="退出登录"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</LinearLayout>

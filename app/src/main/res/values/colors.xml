@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 云视听风格深色主题 -->
+    <color name="bg_dark">#0F1014</color>
+    <color name="bg_panel">#16181F</color>
+    <color name="bg_card">#1C1F28</color>
+    <color name="accent">#FB7299</color>
+    <color name="accent_blue">#00AEEC</color>
+    <color name="text_primary">#F5F6F8</color>
+    <color name="text_secondary">#A8ACB8</color>
+    <color name="text_dim">#6B7080</color>
+    <color name="divider">#23262F</color>
+    <color name="focus_border">#FB7299</color>
+    <color name="red_dot">#FF4757</color>
+</resources>

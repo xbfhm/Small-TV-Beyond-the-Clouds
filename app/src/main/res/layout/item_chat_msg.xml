@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+
+    <LinearLayout
+        android:id="@+id/boxMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:orientation="vertical"
+        android:gravity="end"
+        android:maxWidth="420dp">
+
+        <ImageView
+            android:id="@+id/ivFaceMe"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="3dp"
+            android:scaleType="centerCrop"
+            android:background="#22252E" />
+
+        <TextView
+            android:id="@+id/tvMsgMe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bubble_me"
+            android:padding="10dp"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/boxOther"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:gravity="start"
+        android:maxWidth="420dp">
+
+        <ImageView
+            android:id="@+id/ivFaceOther"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="3dp"
+            android:scaleType="centerCrop"
+            android:background="#22252E" />
+
+        <TextView
+            android:id="@+id/tvMsgOther"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bubble_other"
+            android:padding="10dp"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</FrameLayout>

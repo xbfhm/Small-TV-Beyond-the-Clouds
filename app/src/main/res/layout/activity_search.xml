@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_dark"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="@color/bg_panel">
+
+        <Button
+            android:id="@+id/btnBack"
+            style="@style/YzbButton"
+            android:text="返回" />
+
+        <EditText
+            android:id="@+id/etKeyword"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:hint="输入关键词，回车搜索"
+            android:textColorHint="@color/text_dim"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:background="@drawable/edit_bg"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:singleLine="true"
+            android:imeOptions="actionSearch" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            style="@style/YzbButton"
+            android:layout_marginStart="8dp"
+            android:text="搜索" />
+
+        <Button
+            android:id="@+id/btnTabBili"
+            style="@style/YzbButton"
+            android:layout_marginStart="8dp"
+            android:text="B站视频" />
+
+        <Button
+            android:id="@+id/btnTabBangumi"
+            style="@style/YzbButton"
+            android:text="番剧" />
+
+        <Button
+            android:id="@+id/btnTabFree"
+            style="@style/YzbButton"
+            android:text="免费源" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvSearchStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        android:text="" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvResult"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:clipToPadding="false" />
+
+        <ProgressBar
+            android:id="@+id/pbSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+</LinearLayout>

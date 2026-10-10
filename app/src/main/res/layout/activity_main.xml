@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_dark"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
+
+    <!-- 顶部栏: Logo + 导航 + 搜索 + 消息 + 我的 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="10dp"
+        android:background="@color/bg_panel">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="云之彼端小电视"
+            android:textColor="@color/accent"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:paddingEnd="14dp"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/btnHome"
+            style="@style/YzbButton"
+            android:text="首页" />
+
+        <Button
+            android:id="@+id/btnBangumi"
+            style="@style/YzbButton"
+            android:text="番剧" />
+
+        <Button
+            android:id="@+id/btnRank"
+            style="@style/YzbButton"
+            android:text="排行" />
+
+        <Button
+            android:id="@+id/btnHistory"
+            style="@style/YzbButton"
+            android:text="历史" />
+
+        <Button
+            android:id="@+id/btnFree"
+            style="@style/YzbButton"
+            android:text="免费动漫" />
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_weight="1"
+            android:hint="搜索视频 / 番剧 / 免费动漫..."
+            android:textColorHint="@color/text_dim"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:background="@drawable/edit_bg"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:singleLine="true"
+            android:imeOptions="actionSearch" />
+
+        <Button
+            android:id="@+id/btnMsg"
+            style="@style/YzbButton"
+            android:text="消息" />
+
+        <Button
+            android:id="@+id/btnUser"
+            style="@style/YzbButton"
+            android:text="未登录" />
+
+    </LinearLayout>
+
+    <!-- 内容区 -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:clipToPadding="false" />
+
+        <ProgressBar
+            android:id="@+id/pbLoading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/text_secondary"
+            android:textSize="18sp"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <!-- 底部提示条 -->
+    <TextView
+        android:id="@+id/tvBottom"
+        android:layout_width="match_parent"
+        android:layout_height="34dp"
+        android:background="@color/bg_panel"
+        android:gravity="center_vertical"
+        android:paddingStart="14dp"
+        android:textColor="@color/text_dim"
+        android:textSize="13sp"
+        android:text="就绪" />
+
+</LinearLayout>
